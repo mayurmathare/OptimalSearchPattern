@@ -20,10 +20,8 @@ Developed by **Mayur Mathare** (Roll No: **CD24023**) for the **Design and Analy
 
 ## 🌐 Live Demonstration
 
-Deploy this repository on **GitHub Pages** to get your live submission URL:
-```text
-https://<your-github-username>.github.io/<repository-name>/
-```
+* **Live Website URL:** [https://mayurmathare.github.io/OptimalSearchPattern/](https://mayurmathare.github.io/OptimalSearchPattern/)
+* **GitHub Repository:** [https://github.com/mayurmathare/OptimalSearchPattern](https://github.com/mayurmathare/OptimalSearchPattern)
 
 ---
 
@@ -82,38 +80,17 @@ $$\text{Cost}(i, j) = \min_{i \le r \le j} \Big[ \text{Cost}(i, r - 1) + \text{C
 
 ---
 
-## 🚀 How to Deploy on GitHub Pages
-
-1. **Clone or copy this project folder**:
-   ```bash
-   cd optimal-search-pattern-bst
-   ```
-
-2. **Initialize Git & commit files**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Add Optimal Search Pattern DAA Practical Website"
-   ```
-
-3. **Create a GitHub repository**:
-   * Go to [github.com/new](https://github.com/new).
-   * Name your repository `optimal-search-pattern-obst`.
-   * Set visibility to **Public**.
-
-4. **Push your code**:
-   ```bash
-   git remote add origin https://github.com/<your-username>/optimal-search-pattern-obst.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-5. **Enable GitHub Pages**:
-   * Navigate to your repository's **Settings** tab.
-   * On the left sidebar, click **Pages**.
-   * Under **Build and deployment > Branch**, select `main` and folder `/ (root)`.
-   * Click **Save**.
-   * Your site will be published at `https://<your-username>.github.io/optimal-search-pattern-obst/` in 1–2 minutes!
+## 🚀 How to Enable GitHub Pages
+ 
+The complete code is already pushed to [github.com/mayurmathare/OptimalSearchPattern](https://github.com/mayurmathare/OptimalSearchPattern).
+ 
+To turn on the live website:
+ 1. Open your repository: [https://github.com/mayurmathare/OptimalSearchPattern](https://github.com/mayurmathare/OptimalSearchPattern)
+ 2. Navigate to **Settings > Pages** (in the left sidebar).
+ 3. Under **Build and deployment > Branch**, select `main` and folder `/ (root)`.
+ 4. Click **Save**.
+ 5. Your site will be published at:
+    👉 **[https://mayurmathare.github.io/OptimalSearchPattern/](https://mayurmathare.github.io/OptimalSearchPattern/)** within 1–2 minutes!
 
 ---
 
