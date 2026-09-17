@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimal Search Pattern - Optimal Binary Search Tree using DP | DAA Practical</title>
+  <meta name="description" content="College practical submission on Optimal Search Pattern (Optimal Binary Search Tree using Dynamic Programming) by Mayur Mathare (CD24023) for Design and Analysis of Algorithms (DAA).">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Academic Department Header -->
+  <div class="top-header-banner">
+    <div class="banner-left">
+      <span class="banner-tag">DAA Practical Lab</span>
+      <span>Department of Computer Engineering • Academic Year 2024–2025</span>
+    </div>
+    <div class="banner-student">
+      <span>Student: <strong>Mayur Mathare</strong></span>
+      <span>•</span>
+      <span>Roll No: <strong>CD24023</strong></span>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Bar -->
+  <nav class="sticky-navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-brand">
+        <div class="nav-brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="3"></circle>
+            <circle cx="6" cy="19" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="12" y1="8" x2="6" y2="16"></line>
+            <line x1="12" y1="8" x2="18" y2="16"></line>
+          </svg>
+        </div>
+        <span>OBST Dynamic Programming</span>
+        <span class="nav-brand-badge">DAA</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-item active">Home</a></li>
+        <li><a href="#aim" class="nav-item">Aim</a></li>
+        <li><a href="#objective" class="nav-item">Objective</a></li>
+        <li><a href="#theory" class="nav-item">Theory</a></li>
+        <li><a href="#problem" class="nav-item">Problem</a></li>
+        <li><a href="#formula" class="nav-item">Formula</a></li>
+        <li><a href="#algorithm" class="nav-item">Algorithm</a></li>
+        <li><a href="#flowchart" class="nav-item">Flowchart</a></li>
+        <li><a href="#simulator" class="nav-item">Simulator</a></li>
+        <li><a href="#dptable" class="nav-item">DP Table</a></li>
+        <li><a href="#bsttree" class="nav-item">BST Tree</a></li>
+        <li><a href="#result" class="nav-item">Result</a></li>
+        <li><a href="#complexity" class="nav-item">Complexity</a></li>
+        <li><a href="#discussion" class="nav-item">Discussion</a></li>
+        <li><a href="#conclusion" class="nav-item">Conclusion</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-nav-print" onclick="window.print()" title="Print / Export Practical Report">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>Print Report</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. HOME SECTION -->
+  <section id="home" class="hero-section">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          DAA Practical Submission
+        </div>
+        <h1 class="hero-title">
+          Optimal <span>Search Pattern</span>
+        </h1>
+        <h2 class="hero-subtitle">
+          Optimal Binary Search Tree using Dynamic Programming
+        </h2>
+
+        <div class="hero-quote-box">
+          <p>
+            “An Optimal Binary Search Tree (OBST) is a binary search tree arranged to minimize the expected search cost when the search frequencies of keys are known.”
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#aim" class="btn btn-primary">
+            <span>Start Practical</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+          <a href="#simulator" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>Launch Simulator</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Student Credentials Card -->
+      <div class="student-card">
+        <div class="student-card-header">
+          <h3>Candidate Profile</h3>
+          <span class="student-badge">Official Record</span>
+        </div>
+        <div class="student-info-list">
+          <div class="student-info-item">
+            <span class="student-info-label">Student Name:</span>
+            <span class="student-info-value">Mayur Mathare</span>
+          </div>
+          <div class="student-info-item">
+            <span class="student-info-label">Roll Number:</span>
+            <span class="student-info-value">CD24023</span>
+          </div>
+          <div class="student-info-item">
+            <span class="student-info-label">Course / Subject:</span>
+            <span class="student-info-value">Design &amp; Analysis of Algorithms (DAA)</span>
+          </div>
+          <div class="student-info-item">
+            <span class="student-info-label">Practical Topic:</span>
+            <span class="student-info-value">Optimal Search Pattern (OBST)</span>
+          </div>
+          <div class="student-info-item">
+            <span class="student-info-label">Algorithm Paradigm:</span>
+            <span class="student-info-value">Dynamic Programming (Bottom-Up)</span>
+          </div>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="stat-box">
+            <div class="stat-box-value">O(n³)</div>
+            <div class="stat-box-label">Time Complexity</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-value">O(n²)</div>
+            <div class="stat-box-label">Space Complexity</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-value">Global</div>
+            <div class="stat-box-label">Optimal Solution</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. AIM SECTION -->
+  <section id="aim" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Laboratory Practical</span>
+      <h2 class="section-title">2. Aim of the Practical</h2>
+      <p class="section-description">Formal statement of the algorithm engineering objective.</p>
+    </div>
+
+    <div class="practical-aim-card">
+      <div class="aim-label-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+        </svg>
+        Aim Statement
+      </div>
+      <p class="aim-statement-text">
+        “To implement the Optimal Binary Search Tree using Dynamic Programming and determine the tree structure that minimizes the expected search cost for given keys and their search frequencies.”
+      </p>
+
+      <div class="aim-meta-grid">
+        <div class="aim-meta-item">
+          <div class="aim-meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="aim-meta-text">
+            <h5>Core Principle</h5>
+            <p>Weighted Depth Minimization</p>
+          </div>
+        </div>
+        <div class="aim-meta-item">
+          <div class="aim-meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </div>
+          <div class="aim-meta-text">
+            <h5>Data Structure</h5>
+            <p>2D Dynamic Tabulation Matrix</p>
+          </div>
+        </div>
+        <div class="aim-meta-item">
+          <div class="aim-meta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <div class="aim-meta-text">
+            <h5>Lab Deliverable</h5>
+            <p>Working Simulator &amp; Tree Visualizer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. OBJECTIVES SECTION -->
+  <section id="objective" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Target Outcomes</span>
+      <h2 class="section-title">3. Practical Objectives</h2>
+      <p class="section-description">Key learning milestones and algorithmic competencies covered in this experiment.</p>
+    </div>
+
+    <div class="objectives-grid">
+      <div class="objective-card">
+        <div class="objective-num">1</div>
+        <div class="objective-content">
+          <h4>Understand the Concept of OBST</h4>
+          <p>Learn how binary search tree search cost depends on node depth and how search frequencies dictate the optimal placement of keys.</p>
+        </div>
+      </div>
+
+      <div class="objective-card">
+        <div class="objective-num">2</div>
+        <div class="objective-content">
+          <h4>Apply Dynamic Programming</h4>
+          <p>Formulate the problem using optimal substructure and overlapping subproblems with bottom-up dynamic programming tabulation.</p>
+        </div>
+      </div>
+
+      <div class="objective-card">
+        <div class="objective-num">3</div>
+        <div class="objective-content">
+          <h4>Calculate Minimum Search Cost</h4>
+          <p>Compute cumulative frequency weights and evaluate the exact minimum weighted search cost across all potential subtrees.</p>
+        </div>
+      </div>
+
+      <div class="objective-card">
+        <div class="objective-num">4</div>
+        <div class="objective-content">
+          <h4>Determine Optimal Root Table</h4>
+          <p>Construct the root tracking matrix that records the exact root choice minimizing the cost for every subproblem range (i, j).</p>
+        </div>
+      </div>
+
+      <div class="objective-card">
+        <div class="objective-num">5</div>
+        <div class="objective-content">
+          <h4>Construct &amp; Visualize Optimal BST</h4>
+          <p>Reconstruct the final binary search tree recursively from the root table and render an interactive visual tree diagram.</p>
+        </div>
+      </div>
+
+      <div class="objective-card">
+        <div class="objective-num">6</div>
+        <div class="objective-content">
+          <h4>Analyze Time &amp; Space Complexity</h4>
+          <p>Examine the cubic O(n³) time complexity, quadratic O(n²) memory requirements, and compare with brute-force and greedy approaches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. THEORY SECTION -->
+  <section id="theory" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Conceptual Foundations</span>
+      <h2 class="section-title">4. Theoretical Background</h2>
+      <p class="section-description">Clear, exam-oriented theoretical foundations of Optimal Search Patterns and Binary Search Trees.</p>
+    </div>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <div class="theory-card-header">
+          <div class="theory-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="5" r="3"></circle>
+              <circle cx="6" cy="19" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="12" y1="8" x2="6" y2="16"></line>
+              <line x1="12" y1="8" x2="18" y2="16"></line>
+            </svg>
+          </div>
+          <h3>What is a Binary Search Tree?</h3>
+        </div>
+        <p>
+          A <strong>Binary Search Tree (BST)</strong> is a rooted binary tree data structure with the fundamental ordering property: for any node \(X\), all keys in its left subtree are strictly smaller than \(X\), and all keys in its right subtree are strictly greater than \(X\).
+        </p>
+        <p>
+          The time required to search for a key is proportional to the number of comparisons made, which equals the <strong>depth (level)</strong> of that key in the tree.
+        </p>
+      </div>
+
+      <div class="theory-card">
+        <div class="theory-card-header">
+          <div class="theory-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <h3>What is an Optimal BST?</h3>
+        </div>
+        <p>
+          An <strong>Optimal Binary Search Tree (OBST)</strong> is a binary search tree arranged so that the expected (total weighted) search cost is minimum, based on the known search frequency or access probability of each key.
+        </p>
+        <p>
+          Unlike an ordinary balanced BST (e.g., AVL or Red-Black Tree) which aims to minimize the worst-case height \(\mathcal{O}(\log n)\), an OBST optimizes the <em>average search time</em> for non-uniform access distributions.
+        </p>
+      </div>
+
+      <div class="theory-card">
+        <div class="theory-card-header">
+          <div class="theory-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+          <h3>Search Frequency &amp; Placement Principle</h3>
+        </div>
+        <p>
+          <strong>Search frequency</strong> represents how often a particular key is expected to be queried in practice.
+        </p>
+        <p>
+          To minimize the overall expected search cost:
+          <strong>Keys with higher search frequencies should generally be placed closer to the root</strong> (lower level/depth), so they require fewer comparisons during searches. Less frequent keys can be pushed to deeper levels.
+        </p>
+      </div>
+
+      <div class="theory-card">
+        <div class="theory-card-header">
+          <div class="theory-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Why Dynamic Programming?</h3>
+        </div>
+        <p>
+          A naive brute-force method evaluates all valid BST structures, which grows exponentially according to Catalan numbers: \(\frac{1}{n+1}\binom{2n}{n} \approx \mathcal{O}(4^n / n^{3/2})\).
+        </p>
+        <p>
+          Dynamic Programming reduces this to polynomial time \(\mathcal{O}(n^3)\) through:
+        </p>
+        <ul style="padding-left: 20px; font-size: 0.92rem; color: var(--text-secondary);">
+          <li><strong>Optimal Substructure:</strong> An optimal tree must contain optimal subtrees.</li>
+          <li><strong>Overlapping Subproblems:</strong> Subproblem costs are reused repeatedly when evaluating different parent roots.</li>
+        </ul>
+      </div>
+
+      <div class="theory-card full-width">
+        <div class="theory-card-header">
+          <div class="theory-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h3>The Four Pillars of Dynamic Programming for OBST</h3>
+        </div>
+        <div class="dp-pillars-grid">
+          <div class="dp-pillar">
+            <h5>1. Optimal Substructure</h5>
+            <p>If key \(K_r\) is the optimal root for keys \(K_i \dots K_j\), then its left subtree must be an optimal BST for \(K_i \dots K_{r-1}\), and its right subtree must be an optimal BST for \(K_{r+1} \dots K_j\).</p>
+          </div>
+          <div class="dp-pillar">
+            <h5>2. Overlapping Subproblems</h5>
+            <p>Subproblems of length \(L\) are evaluated once and their minimal costs are stored in table \(C[i][j]\), preventing redundant recalculation across different candidate roots.</p>
+          </div>
+          <div class="dp-pillar">
+            <h5>3. Bottom-Up Tabulation</h5>
+            <p>Calculations proceed diagonally: first all single-node subtrees (length 1), then subtrees of length 2, length 3, up to the full tree of length \(n\).</p>
+          </div>
+          <div class="dp-pillar">
+            <h5>4. Greedy Limitation</h5>
+            <p>Greedy algorithms that choose the highest frequency key as the root fail because placing a heavy root may force other frequent keys into unnecessarily deep, costly subtrees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PROBLEM STATEMENT SECTION -->
+  <section id="problem" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Formal Specification</span>
+      <h2 class="section-title">5. Problem Statement</h2>
+      <p class="section-description">Clear academic formulation of the input, constraints, and required output.</p>
+    </div>
+
+    <div class="problem-card">
+      <div class="problem-quote">
+        “Given a set of sorted keys and their corresponding search frequencies, construct an Optimal Binary Search Tree such that the total weighted search cost is minimized.”
+      </div>
+
+      <div class="io-grid">
+        <div class="io-card">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            Input Requirements
+          </h4>
+          <ul>
+            <li><strong>Sorted Keys:</strong> An ordered sequence of \(n\) distinct keys: \(K = \langle k_1, k_2, \dots, k_n \rangle\) such that \(k_1 < k_2 < \dots < k_n\).</li>
+            <li><strong>Search Frequencies:</strong> Corresponding access frequencies or probabilities: \(F = \langle f_1, f_2, \dots, f_n \rangle\) where \(f_i > 0\) is the search frequency of key \(k_i\).</li>
+          </ul>
+        </div>
+
+        <div class="io-card">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+            Expected Outputs
+          </h4>
+          <ul>
+            <li><strong>Minimum Search Cost:</strong> The lowest possible total weighted cost: \(\text{Cost}(1, n) = \sum_{k=1}^n \text{depth}(k) \times f_k\).</li>
+            <li><strong>Optimal Root:</strong> The root key of the overall tree and each subproblem.</li>
+            <li><strong>Optimal BST Structure:</strong> The exact binary search tree hierarchy minimizing the search cost.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MATHEMATICAL FORMULA SECTION -->
+  <section id="formula" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Recurrence Relation</span>
+      <h2 class="section-title">6. Mathematical Formulation</h2>
+      <p class="section-description">The core Dynamic Programming recurrence relation governing Optimal Binary Search Trees.</p>
+    </div>
+
+    <div class="formula-display-card">
+      <div class="formula-highlight-box">
+        <h3>Recurrence Relation for Subtree Cost</h3>
+        <div class="math-equation">
+          Cost(i, j) = min [ Cost(i, r - 1) + Cost(r + 1, j) ] + Sum(i, j)
+        </div>
+        <p style="color: #bfdbfe; font-size: 0.9rem; margin-top: 8px;">
+          (where the minimum is taken over all candidate roots \(r\) such that \(i \le r \le j\))
+        </p>
+      </div>
+
+      <div class="formula-legend-grid">
+        <div class="legend-item">
+          <span class="legend-symbol">i</span>
+          <span class="legend-desc">Starting key index of the subproblem range</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-symbol">j</span>
+          <span class="legend-desc">Ending key index of the subproblem range</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-symbol">r</span>
+          <span class="legend-desc">Candidate root chosen from \(\{i, i+1, \dots, j\}\)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-symbol">Sum(i, j)</span>
+          <span class="legend-desc">Sum of frequencies of keys from \(i\) to \(j\): \(\sum_{k=i}^j f_k\)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-symbol">Cost(i, r-1)</span>
+          <span class="legend-desc">Minimum search cost of the left subtree</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-symbol">Cost(r+1, j)</span>
+          <span class="legend-desc">Minimum search cost of the right subtree</span>
+        </div>
+      </div>
+
+      <div class="formula-note">
+        <strong>Mathematical Intuition:</strong>
+        When key \(k_r\) is chosen as the root of subtree \(\{k_i \dots k_j\}\), key \(k_r\) becomes the root (depth 1 in this subtree). All nodes in the left subtree and right subtree are shifted one level deeper.
+        Shifting all nodes down by 1 increases each node's search cost by its frequency, adding exactly \(\sum_{k=i}^j f_k = \text{Sum}(i, j)\) to the combined subtree costs.
+        Every possible key \(r\) from \(i\) to \(j\) is evaluated, and the minimum-cost root is selected.
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ALGORITHM SECTION -->
+  <section id="algorithm" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Step-by-Step Procedure</span>
+      <h2 class="section-title">7. Dynamic Programming Algorithm</h2>
+      <p class="section-description">Sequential algorithm execution steps for constructing the Optimal Binary Search Tree.</p>
+    </div>
+
+    <div class="algorithm-card">
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-badge">1</div>
+          <div class="step-text">Take sorted keys and their search frequencies as input.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">2</div>
+          <div class="step-text">Calculate the cumulative frequency sums for all key ranges.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">3</div>
+          <div class="step-text">Initialize the Dynamic Programming cost table with base cases: \(Cost(i, i) = \text{frequency}_i\).</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">4</div>
+          <div class="step-text">Consider subtrees of increasing chain length \(L = 2\) to \(n\).</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">5</div>
+          <div class="step-text">For each length, determine the starting key index \(i\) and ending index \(j = i + L - 1\).</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">6</div>
+          <div class="step-text">Select every possible key \(r\) between \(i\) and \(j\) as candidate root.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">7</div>
+          <div class="step-text">Calculate the total cost for each possible root: \(Cost(i, r-1) + Cost(r+1, j) + Sum(i, j)\).</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">8</div>
+          <div class="step-text">Select the root having minimum cost and record it in the cost table.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">9</div>
+          <div class="step-text">Store the minimum cost in \(C[i][j]\) and the corresponding optimal root in \(R[i][j]\).</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">10</div>
+          <div class="step-text">Repeat until the complete tree of length \(n\) is computed: \(Cost(1, n)\).</div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">11</div>
+          <div class="step-text">Construct the Optimal Binary Search Tree recursively from table \(R\) and display results.</div>
+        </div>
+      </div>
+
+      <!-- Pseudocode block -->
+      <div class="code-box">
+        <div class="code-box-header">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            Algorithm Pseudocode: OPTIMAL_BST(K, F, n)
+          </span>
+          <button class="copy-btn" id="copyCodeBtn" onclick="copyPseudocode()">Copy Code</button>
+        </div>
+        <pre id="pseudocodeBlock"><code>Algorithm OPTIMAL_BST(K, F, n):
+  // Input: Sorted keys K[1..n], frequencies F[1..n], size n
+  // Output: Minimum search cost C[1..n][1..n] and Root table R[1..n][1..n]
+
+  // Step 1: Base cases for subtrees of length 1
+  for i = 1 to n do:
+      C[i][i] = F[i]
+      W[i][i] = F[i]
+      R[i][i] = i
+  end for
+
+  // Step 2: Subtrees of length L = 2 to n
+  for L = 2 to n do:
+      for i = 1 to (n - L + 1) do:
+          j = i + L - 1
+          W[i][j] = W[i][j-1] + F[j]
+          C[i][j] = INFINITY
+
+          // Step 3: Evaluate every candidate root r from i to j
+          for r = i to j do:
+              left_cost  = (r > i) ? C[i][r-1] : 0
+              right_cost = (r < j) ? C[r+1][j] : 0
+              total_cost = left_cost + right_cost + W[i][j]
+
+              if total_cost < C[i][j] then:
+                  C[i][j] = total_cost
+                  R[i][j] = r
+              end if
+          end for
+      end for
+  end for
+
+  return C[1][n], R</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FLOWCHART SECTION -->
+  <section id="flowchart" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Visual Process Model</span>
+      <h2 class="section-title">8. Algorithm Flowchart</h2>
+      <p class="section-description">A clean, academic flowchart diagram illustrating the complete operational flow of the algorithm.</p>
+    </div>
+
+    <div class="flowchart-container">
+      <div class="flowchart-diagram">
+        <!-- START -->
+        <div class="flowchart-step-card shape-oval">START</div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Input -->
+        <div class="flowchart-step-card shape-io">
+          <strong>Input:</strong> Sorted Keys \(K[1..n]\) and Search Frequencies \(F[1..n]\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Calculate Frequency Sums -->
+        <div class="flowchart-step-card">
+          <strong>Calculate Frequency Sums:</strong> \(W[i][j] = \sum_{k=i}^j F[k]\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Initialize DP Table -->
+        <div class="flowchart-step-card">
+          <strong>Initialize DP Table:</strong> Base cases for length 1 (\(C[i][i] = F[i], R[i][i] = i\))
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Select Possible Root -->
+        <div class="flowchart-step-card shape-diamond">
+          <strong>Loop Subtree Length \(L = 2 \dots n\):</strong> Select Possible Root \(r \in \{i \dots j\}\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Calculate Search Cost -->
+        <div class="flowchart-step-card">
+          <strong>Calculate Search Cost:</strong> \(Cost = C[i][r-1] + C[r+1][j] + W[i][j]\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Find Minimum Cost -->
+        <div class="flowchart-step-card">
+          <strong>Find Minimum Cost:</strong> \(C[i][j] = \min_r \{ \text{cost for each } r \}\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Store Optimal Root -->
+        <div class="flowchart-step-card">
+          <strong>Store Optimal Root:</strong> Record winning root \(r\) in \(R[i][j]\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Construct Optimal BST -->
+        <div class="flowchart-step-card">
+          <strong>Construct Optimal BST:</strong> Recursively link subtrees using Table \(R\)
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- Display Minimum Cost and Tree -->
+        <div class="flowchart-step-card shape-io">
+          <strong>Display:</strong> Minimum Search Cost \(C[1][n]\) &amp; Render Tree Diagram
+        </div>
+        <div class="flowchart-arrow">
+          <svg width="24" height="28" viewBox="0 0 24 28">
+            <line x1="12" y1="0" x2="12" y2="22" stroke="#2563eb" stroke-width="2.5"></line>
+            <polygon points="6,20 18,20 12,28" fill="#2563eb"></polygon>
+          </svg>
+        </div>
+
+        <!-- END -->
+        <div class="flowchart-step-card shape-oval">END</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. INTERACTIVE SIMULATOR SECTION -->
+  <section id="simulator" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Hands-On Lab Engine</span>
+      <h2 class="section-title">9. Interactive Simulator</h2>
+      <p class="section-description">Input custom keys and search frequencies to run the live Dynamic Programming algorithm.</p>
+    </div>
+
+    <div class="simulator-card">
+      <!-- Error / Alert Message Container -->
+      <div id="errorAlert" class="alert-box error">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="errorMessage">Invalid inputs detected.</span>
+      </div>
+
+      <!-- Controls bar: Key count & Presets -->
+      <div class="simulator-controls-bar">
+        <div class="key-count-selector">
+          <label for="numKeysSelect">Number of Keys:</label>
+          <select id="numKeysSelect">
+            <option value="2">2 Keys</option>
+            <option value="3">3 Keys</option>
+            <option value="4" selected>4 Keys (Standard Example)</option>
+            <option value="5">5 Keys</option>
+            <option value="6">6 Keys</option>
+            <option value="7">7 Keys</option>
+          </select>
+        </div>
+
+        <div class="presets-group">
+          <span class="presets-label">Sample Presets:</span>
+          <button type="button" class="btn-outline-sm" onclick="loadPreset('default')">Preset 1: A, B, C, D</button>
+          <button type="button" class="btn-outline-sm" onclick="loadPreset('textbook3')">Preset 2: 3 Keys</button>
+          <button type="button" class="btn-outline-sm" onclick="loadPreset('keys5')">Preset 3: 5 Keys</button>
+        </div>
+      </div>
+
+      <!-- Input Table -->
+      <div class="input-table-container">
+        <table class="input-table" id="keysInputTable">
+          <thead>
+            <tr>
+              <th style="width: 15%;">Index (i)</th>
+              <th style="width: 42%;">Key Name (Sorted)</th>
+              <th style="width: 43%;">Search Frequency (pᵢ / fᵢ)</th>
+            </tr>
+          </thead>
+          <tbody id="keysTableBody">
+            <!-- Dynamically populated rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Simulator Actions -->
+      <div class="simulator-actions">
+        <button type="button" class="btn btn-primary" id="calculateBtn" onclick="calculateOBST()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Calculate</span>
+        </button>
+
+        <button type="button" class="btn btn-secondary" onclick="resetSimulator()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span>Reset</span>
+        </button>
+
+        <button type="button" class="btn-outline-sm" onclick="sortKeysAscending()" title="Sort keys in alphabetical / numerical ascending order">
+          Sort Keys Ascending
+        </button>
+
+        <button type="button" class="btn-outline-sm" onclick="randomizeFrequencies()" title="Generate random non-zero frequencies">
+          Randomize Frequencies
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 & 11. DP TABLE SECTION -->
+  <section id="dptable" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Tabulation Memory</span>
+      <h2 class="section-title">10 &amp; 11. Dynamic Programming Tables</h2>
+      <p class="section-description">Interactive DP matrices generated by the algorithm. Click any cell to inspect its recurrence calculation.</p>
+    </div>
+
+    <div class="dp-tables-card">
+      <div class="table-tabs-nav">
+        <button class="table-tab-btn active" id="tabCostBtn" onclick="switchTableTab('cost')">
+          Cost Table C[i][j]
+        </button>
+        <button class="table-tab-btn" id="tabRootBtn" onclick="switchTableTab('root')">
+          Root Table R[i][j]
+        </button>
+        <button class="table-tab-btn" id="tabWeightBtn" onclick="switchTableTab('weight')">
+          Weight Table W[i][j]
+        </button>
+      </div>
+
+      <!-- Matrix Container -->
+      <div class="matrix-container" id="matrixContainer">
+        <!-- Dynamically rendered table -->
+      </div>
+
+      <!-- Subproblem Cell Inspector Panel -->
+      <div class="cell-inspector-panel" id="cellInspectorPanel">
+        <h4>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span id="inspectorTitle">Subproblem Recurrence Inspector</span>
+        </h4>
+        <div id="inspectorContent">
+          Click any calculated cell above to view how candidate roots were evaluated and how the minimum cost was determined.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. CALCULATION EXPLANATION SECTION -->
+  <section id="calculation" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Analytical Walkthrough</span>
+      <h2 class="section-title">12. Calculation Explanation</h2>
+      <p class="section-description">Mathematical breakdown demonstrating how each subproblem cost is computed.</p>
+    </div>
+
+    <div class="calculation-card">
+      <div class="hero-quote-box" style="margin-bottom: 20px;">
+        <p>
+          “Each possible key is considered as a root. The cost of the left and right subtrees is added to the sum of frequencies. The root producing the minimum total cost is selected.”
+        </p>
+      </div>
+
+      <h4 style="color: var(--primary-dark); font-size: 1.1rem; margin-bottom: 12px;">
+        Sample Calculation for Final Tree: \(C[1][n]\)
+      </h4>
+      <div id="calculationTraceContainer" class="calculation-steps-list">
+        <!-- Dynamically injected calculation details for the active input -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. OPTIMAL BST VISUALIZATION SECTION -->
+  <section id="bsttree" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Interactive Structure</span>
+      <h2 class="section-title">13. Optimal BST Visualization</h2>
+      <p class="section-description">Dynamically computed binary search tree minimizing the total weighted search cost.</p>
+    </div>
+
+    <div class="tree-visualization-card">
+      <!-- Tree SVG Canvas -->
+      <div class="tree-canvas-container" id="treeCanvasContainer">
+        <svg id="bstSvgCanvas" width="100%" height="440" viewBox="0 0 800 440"></svg>
+      </div>
+
+      <!-- Tree Statistics Cards -->
+      <div class="tree-stats-row">
+        <div class="tree-stat-card">
+          <div class="tree-stat-value" id="statTreeRoot">-</div>
+          <div class="tree-stat-label">Optimal Root Key</div>
+        </div>
+        <div class="tree-stat-card">
+          <div class="tree-stat-value" id="statTreeCost">-</div>
+          <div class="tree-stat-label">Minimum Search Cost</div>
+        </div>
+        <div class="tree-stat-card">
+          <div class="tree-stat-value" id="statTreeHeight">-</div>
+          <div class="tree-stat-label">Tree Height / Levels</div>
+        </div>
+        <div class="tree-stat-card">
+          <div class="tree-stat-value" id="statTreeSumFreq">-</div>
+          <div class="tree-stat-label">Total Frequency Sum</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. RESULT SECTION -->
+  <section id="result" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Experimental Findings</span>
+      <h2 class="section-title">14. Result Summary</h2>
+      <p class="section-description">Official summary of the practical results and mathematical verification.</p>
+    </div>
+
+    <div class="result-card">
+      <div class="result-metrics-grid">
+        <div class="result-metric-box">
+          <div class="result-metric-label">Minimum Search Cost</div>
+          <div class="result-metric-value" id="resMinCost">-</div>
+        </div>
+        <div class="result-metric-box">
+          <div class="result-metric-label">Optimal Root</div>
+          <div class="result-metric-value" id="resOptimalRoot">-</div>
+        </div>
+        <div class="result-metric-box">
+          <div class="result-metric-label">Number of Keys</div>
+          <div class="result-metric-value" id="resNumKeys">-</div>
+        </div>
+        <div class="result-metric-box">
+          <div class="result-metric-label">Formula Verification</div>
+          <div class="result-metric-value" id="resVerification" style="color: var(--success-color); font-size: 1.5rem;">Verified</div>
+        </div>
+      </div>
+
+      <div class="result-statement-box">
+        <h4>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Official Practical Result Statement
+        </h4>
+        <p id="resStatementText">
+          “The Optimal Binary Search Tree was successfully constructed using Dynamic Programming, and the minimum search cost was obtained for the given key frequencies.”
+        </p>
+      </div>
+
+      <!-- Cost Verification Breakdown -->
+      <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-top: 16px;">
+        <h5 style="color: var(--primary-navy); font-size: 0.95rem; margin-bottom: 8px;">
+          Direct Verification: \(\sum (\text{Depth}_k \times \text{Frequency}_k)\)
+        </h5>
+        <div id="costVerificationList" style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-secondary);">
+          Calculating verification...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. COMPLEXITY ANALYSIS SECTION -->
+  <section id="complexity" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Performance Evaluation</span>
+      <h2 class="section-title">15. Complexity Analysis</h2>
+      <p class="section-description">Theoretical asymptotic efficiency and algorithmic performance comparison.</p>
+    </div>
+
+    <div class="complexity-grid">
+      <div class="complexity-card">
+        <span class="section-tag">Time Complexity</span>
+        <div class="complexity-badge">O(n³)</div>
+        <h4 style="color: var(--primary-dark); margin-bottom: 8px;">Triply Nested Loop Derivation</h4>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          The algorithm runs three nested loops:
+        </p>
+        <ol style="padding-left: 20px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+          <li>Subtree chain length \(L = 2\) to \(n\) (executes \(n - 1\) times).</li>
+          <li>Starting index \(i = 1\) to \((n - L + 1)\) (executes \(\approx n\) times).</li>
+          <li>Candidate root \(r = i\) to \(j\) (executes \(\approx L\) times).</li>
+        </ol>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+          Total operations: \(\sum_{L=2}^n (n - L + 1) \cdot L = \frac{n^3 - n}{6} \in \mathcal{O}(n^3)\).
+        </p>
+        <div style="background: var(--tint-blue); border: 1px solid var(--soft-blue); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.84rem; margin-top: 12px; color: var(--primary-navy);">
+          <strong>Viva Distinction:</strong> With Donald Knuth's optimization utilizing the monotonicity property \(R[i][j-1] \le R[i][j] \le R[i+1][j]\), the time complexity reduces to \(\mathcal{O}(n^2)\).
+        </div>
+      </div>
+
+      <div class="complexity-card">
+        <span class="section-tag">Space Complexity</span>
+        <div class="complexity-badge">O(n²)</div>
+        <h4 style="color: var(--primary-dark); margin-bottom: 8px;">Auxiliary Tabulation Tables</h4>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          The dynamic programming approach stores subproblem solutions in 2D arrays:
+        </p>
+        <ul style="padding-left: 20px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+          <li><strong>Cost Table:</strong> \(C[n+1][n+1]\) to store minimum costs.</li>
+          <li><strong>Root Table:</strong> \(R[n+1][n+1]\) to store optimal roots for tree reconstruction.</li>
+          <li><strong>Weight Table:</strong> \(W[n+1][n+1]\) to store cumulative frequency sums.</li>
+        </ul>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+          Since each matrix has size \((n+1) \times (n+1)\), the overall auxiliary space complexity is \(\mathcal{O}(n^2)\).
+        </p>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Approach</th>
+            <th>Time Complexity</th>
+            <th>Space Complexity</th>
+            <th>Optimality Guarantee</th>
+            <th>Practical Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Brute Force</strong></td>
+            <td style="color: var(--danger-color); font-family: var(--font-mono);">Exponential: O(4ⁿ / n³/²)</td>
+            <td style="font-family: var(--font-mono);">O(n)</td>
+            <td>Guaranteed</td>
+            <td>Intractable for \(n > 15\); explores all Catalan binary trees.</td>
+          </tr>
+          <tr>
+            <td><strong>Greedy by Frequency</strong></td>
+            <td style="color: var(--success-color); font-family: var(--font-mono);">O(n log n)</td>
+            <td style="font-family: var(--font-mono);">O(n)</td>
+            <td style="color: var(--danger-color);">Not Guaranteed</td>
+            <td>Sub-optimal; highest frequency root can distort subtree balance.</td>
+          </tr>
+          <tr>
+            <td><strong>Dynamic Programming (Standard)</strong></td>
+            <td style="color: var(--primary-blue); font-family: var(--font-mono);">O(n³)</td>
+            <td style="font-family: var(--font-mono);">O(n²)</td>
+            <td style="color: var(--success-color);">100% Globally Optimal</td>
+            <td>Polynomial time; ideal balance for practical datasets.</td>
+          </tr>
+          <tr>
+            <td><strong>DP with Knuth's Optimization</strong></td>
+            <td style="color: var(--success-color); font-family: var(--font-mono);">O(n²)</td>
+            <td style="font-family: var(--font-mono);">O(n²)</td>
+            <td style="color: var(--success-color);">100% Globally Optimal</td>
+            <td>Narrows root search bounds using monotonicity property.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 16. APPLICATIONS SECTION -->
+  <section id="applications" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Real-World Engineering</span>
+      <h2 class="section-title">16. Practical Applications</h2>
+      <p class="section-description">Where Optimal Binary Search Trees and Optimal Search Patterns are deployed in computing systems.</p>
+    </div>
+
+    <div class="applications-grid">
+      <div class="app-card">
+        <div class="app-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+        </div>
+        <h4>Database Searching &amp; Indexing</h4>
+        <p>In database systems, index pages and records with known high query frequencies are organized using optimal search patterns to reduce disk I/O operations.</p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <h4>Dictionary &amp; Spell Checking</h4>
+        <p>Language dictionaries place frequently looked-up words (such as "the", "is", "and") near the top of the search tree, dramatically accelerating text processing.</p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <h4>Compiler Symbol Tables</h4>
+        <p>Compilers use OBSTs for symbol table organization. Reserved keywords like <code>if</code>, <code>for</code>, and <code>return</code> are searched millions of times during compilation and reside near the root.</p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <h4>Information Retrieval</h4>
+        <p>Search engines and catalog indexes structure query inverted indices so high-frequency search keywords can be resolved with minimum latency.</p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <h4>Network Packet Routing &amp; Filtering</h4>
+        <p>Router packet inspection engines match IP prefix headers against routing tables organized as optimal trees based on historical packet volume.</p>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <h4>Frequently Accessed Cache Structures</h4>
+        <p>Operating system page tables and memory caching systems prioritize memory block addresses that experience heavy temporal locality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17. DISCUSSION QUESTIONS SECTION -->
+  <section id="discussion" class="section-wrapper">
+    <div class="section-header">
+      <span class="section-tag">Viva Voce Preparation</span>
+      <h2 class="section-title">17. Discussion &amp; Viva Questions</h2>
+      <p class="section-description">Comprehensive answers to standard university oral examination (viva) questions.</p>
+    </div>
+
+    <div class="accordion-wrapper">
+      <!-- Q1 -->
+      <div class="accordion-item active">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q1</span>
+            What is an Optimal Binary Search Tree?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body" style="max-height: 200px;">
+          <div class="accordion-content">
+            An <strong>Optimal Binary Search Tree (OBST)</strong> is a binary search tree constructed for a given set of sorted keys and their search frequencies or probabilities, arranged in such a way that the expected or total weighted search cost is minimized.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q2</span>
+            Why is Dynamic Programming used?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            Dynamic Programming is used because the problem exhibits <strong>optimal substructure</strong> (an optimal tree contains optimal subtrees) and <strong>overlapping subproblems</strong>. DP avoids repeated exponential recalculations by storing solutions to smaller subtrees in a lookup table, reducing the runtime from exponential to \(\mathcal{O}(n^3)\).
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q3</span>
+            What is the objective of OBST?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            The primary objective of OBST is to construct a valid binary search tree that minimizes the total weighted search cost: \(\sum_{i=1}^n (\text{depth}(k_i) \times \text{frequency}_i)\), where root depth is counted as 1.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q4</span>
+            What is the recurrence relation?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            The recurrence relation is:
+            <br>
+            <strong>\(Cost(i, j) = \min_{i \le r \le j} [ Cost(i, r - 1) + Cost(r + 1, j) ] + Sum(i, j)\)</strong>
+            <br>
+            where \(i\) is the start key, \(j\) is the end key, \(r\) is the chosen root, and \(Sum(i, j) = \sum_{k=i}^j f_k\).
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q5</span>
+            What does search frequency represent?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            Search frequency represents the number of times or the relative probability that a particular key is expected to be searched during practical system operation. Keys with higher frequencies are placed closer to the root.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q6</span>
+            What is the time complexity?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            The standard Dynamic Programming algorithm has a time complexity of <strong>\(\mathcal{O}(n^3)\)</strong> due to three nested loops (length of subtree, starting index, and candidate root search). With Donald Knuth's optimization, it can be reduced to <strong>\(\mathcal{O}(n^2)\)</strong>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q7</span>
+            What is the space complexity?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            The space complexity is <strong>\(\mathcal{O}(n^2)\)</strong> because the algorithm requires 2D matrices of dimensions \((n+1) \times (n+1)\) to store the cost table \(C[i][j]\), the optimal root table \(R[i][j]\), and the weight table \(W[i][j]\).
+          </div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <span class="accordion-q-num">Q8</span>
+            What is optimal substructure?
+          </h4>
+          <span class="accordion-chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <strong>Optimal Substructure</strong> is the property that an optimal solution to the overall problem contains optimal solutions to its constituent subproblems. In an OBST, if key \(k_r\) is the optimal root for keys \(k_i \dots k_j\), then the left subtree must be an optimal BST for keys \(k_i \dots k_{r-1}\), and the right subtree must be an optimal BST for keys \(k_{r+1} \dots k_j\).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18. CONCLUSION SECTION -->
+  <section id="conclusion" class="section-wrapper alternate-bg">
+    <div class="section-header">
+      <span class="section-tag">Laboratory Assessment</span>
+      <h2 class="section-title">18. Conclusion &amp; Deployment</h2>
+      <p class="section-description">Practical wrap-up, student submission credentials, and GitHub Pages deployment instructions.</p>
+    </div>
+
+    <div class="conclusion-card">
+      <h3 style="color: var(--primary-dark); font-size: 1.35rem; margin-bottom: 12px;">
+        Practical Conclusion
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 16px;">
+        In this experiment, the <strong>Optimal Search Pattern problem</strong> was successfully investigated, modeled, and implemented using the <strong>Dynamic Programming bottom-up tabulation approach</strong>.
+        The algorithm effectively determines the optimal binary search tree that minimizes the expected search cost for arbitrary key frequencies.
+        The interactive simulator, 2D cost and root matrices, and dynamic SVG tree visualization provide a comprehensive laboratory tool for studying and demonstrating algorithm analysis in academic coursework and viva voce examinations.
+      </p>
+
+      <!-- Student Submission Sign-off -->
+      <div class="submission-meta-box">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Candidate Name</span>
+          <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-top: 2px;">Mayur Mathare</h4>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Roll Number</span>
+          <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-top: 2px;">CD24023</h4>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Subject</span>
+          <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-top: 2px;">Design &amp; Analysis of Algorithms (DAA)</h4>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Practical Status</span>
+          <h4 style="color: var(--success-color); font-size: 1.15rem; margin-top: 2px;">Completed &amp; Verified</h4>
+        </div>
+      </div>
+
+      <!-- GitHub Pages Deployment Guide -->
+      <div class="deployment-card">
+        <h4>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          How to Upload to GitHub &amp; Deploy via GitHub Pages
+        </h4>
+        <div class="deployment-steps">
+          <div class="deployment-step">
+            <span class="deployment-step-num">1</span>
+            <div>Initialize Git in this directory: <span class="code-inline">git init</span> and create your commit: <span class="code-inline">git add . &amp;&amp; git commit -m "Add DAA Optimal Search Pattern Practical Website"</span></div>
+          </div>
+          <div class="deployment-step">
+            <span class="deployment-step-num">2</span>
+            <div>Create a new public repository on GitHub named <span class="code-inline">optimal-search-pattern-obst</span>.</div>
+          </div>
+          <div class="deployment-step">
+            <span class="deployment-step-num">3</span>
+            <div>Link remote and push: <span class="code-inline">git remote add origin https://github.com/&lt;your-username&gt;/optimal-search-pattern-obst.git</span> followed by <span class="code-inline">git push -u origin main</span>.</div>
+          </div>
+          <div class="deployment-step">
+            <span class="deployment-step-num">4</span>
+            <div>In your GitHub repository, open <strong>Settings &gt; Pages</strong>. Under <em>Branch</em>, select <span class="code-inline">main</span> and <span class="code-inline">/ (root)</span>, then click <strong>Save</strong>.</div>
+          </div>
+          <div class="deployment-step">
+            <span class="deployment-step-num">5</span>
+            <div>Within 1–2 minutes, your live practical website will be live at: <span class="code-inline">https://&lt;your-username&gt;.github.io/optimal-search-pattern-obst/</span>, ready for submission!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="practical-footer">
+    <div class="footer-content">
+      <div>
+        <p class="footer-student">DAA Practical Laboratory Submission • Mayur Mathare (CD24023)</p>
+        <p style="font-size: 0.82rem; margin-top: 4px;">Topic: Optimal Search Pattern — Optimal Binary Search Tree using Dynamic Programming</p>
+      </div>
+      <div>
+        <p style="font-size: 0.82rem;">Department of Computer Engineering • Dynamic Programming Laboratory</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

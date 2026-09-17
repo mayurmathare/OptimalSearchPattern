@@ -1,0 +1,124 @@
+# Optimal Search Pattern — Optimal Binary Search Tree (OBST)
+
+### Design and Analysis of Algorithms (DAA) — College Practical Submission
+
+An interactive, academic-grade laboratory website implementing the **Optimal Binary Search Tree (OBST)** problem using **Dynamic Programming**.
+
+Developed by **Mayur Mathare** (Roll No: **CD24023**) for the **Design and Analysis of Algorithms (DAA)** practical laboratory curriculum.
+
+---
+
+## 👨‍🎓 Student Submission Details
+
+* **Student Name:** Mayur Mathare
+* **Roll Number:** CD24023
+* **Subject:** Design and Analysis of Algorithms (DAA)
+* **Practical Topic:** Optimal Search Pattern (Optimal Binary Search Tree using Dynamic Programming)
+* **Academic Year:** 2024–2025
+
+---
+
+## 🌐 Live Demonstration
+
+Deploy this repository on **GitHub Pages** to get your live submission URL:
+```text
+https://<your-github-username>.github.io/<repository-name>/
+```
+
+---
+
+## 📖 Practical Overview
+
+An **Optimal Binary Search Tree (OBST)** is a binary search tree constructed for a known set of sorted keys and their search frequencies or query probabilities, arranged so that the total expected search cost is minimized:
+
+$$\text{Expected Cost} = \sum_{i=1}^n \text{depth}(k_i) \times \text{frequency}_i$$
+
+Because higher frequency keys require fewer comparisons when placed closer to the root, the algorithm leverages **Dynamic Programming** to evaluate all possible subtree configurations in polynomial time.
+
+### Practical Flow
+1. **Aim** &rarr; Formal practical objective.
+2. **Objectives** &rarr; 6 targeted academic outcomes.
+3. **Theory** &rarr; Comprehensive BST, OBST, and DP foundations.
+4. **Problem Statement** &rarr; Formal input/output constraints.
+5. **Mathematical Formula** &rarr; Complete recurrence relation and parameter breakdown.
+6. **Algorithm** &rarr; 11 sequential execution steps & syntax-highlighted pseudocode.
+7. **Flowchart** &rarr; Clean SVG visual flowchart diagram.
+8. **Interactive Simulator** &rarr; Dynamic inputs, presets, key sorting, and frequency randomizer.
+9. **DP Tables** &rarr; Live Cost $C[i][j]$, Root $R[i][j]$, and Weight $W[i][j]$ matrices with cell inspection.
+10. **Calculation Walkthrough** &rarr; Step-by-step root evaluation breakdown for active data.
+11. **Optimal BST Visualization** &rarr; Interactive SVG tree canvas with per-node costs and levels.
+12. **Result Summary** &rarr; Direct verification formula and official student declaration.
+13. **Complexity Analysis** &rarr; $O(n^3)$ time derivation, $O(n^2)$ space, and Knuth's $O(n^2)$ optimization note.
+14. **Real-World Applications** &rarr; Database indexing, compiler symbol tables, routing, dictionaries.
+15. **Discussion / Viva Questions** &rarr; Interactive accordion covering standard university oral exam questions.
+16. **Conclusion** &rarr; Practical summary and deployment instructions.
+
+---
+
+## 🧮 Mathematical Recurrence
+
+For a subtree spanning keys $k_i \dots k_j$:
+
+$$\text{Cost}(i, j) = \min_{i \le r \le j} \Big[ \text{Cost}(i, r - 1) + \text{Cost}(r + 1, j) \Big] + \text{Sum}(i, j)$$
+
+* $i$: Starting key index
+* $j$: Ending key index
+* $r$: Candidate root index ($i \le r \le j$)
+* $\text{Sum}(i, j) = \sum_{k=i}^j f_k$: Cumulative frequency sum
+* **Base Cases:**
+  * $\text{Cost}(i, i - 1) = 0$ (empty subtree)
+  * $\text{Cost}(i, i) = f_i$ (single key subtree)
+
+---
+
+## ⏱️ Complexity Analysis
+
+| Approach | Time Complexity | Space Complexity | Optimality Guarantee |
+| :--- | :--- | :--- | :--- |
+| **Brute Force** | $\mathcal{O}(4^n / n^{3/2})$ (Catalan) | $\mathcal{O}(n)$ | Guaranteed (Intractable for $n > 15$) |
+| **Greedy by Frequency** | $\mathcal{O}(n \log n)$ | $\mathcal{O}(n)$ | **Not Guaranteed** (Sub-optimal) |
+| **Dynamic Programming** | $\mathcal{O}(n^3)$ | $\mathcal{O}(n^2)$ | **100% Globally Optimal** |
+| **DP with Knuth's Optimization** | $\mathcal{O}(n^2)$ | $\mathcal{O}(n^2)$ | **100% Globally Optimal** |
+
+---
+
+## 🚀 How to Deploy on GitHub Pages
+
+1. **Clone or copy this project folder**:
+   ```bash
+   cd optimal-search-pattern-bst
+   ```
+
+2. **Initialize Git & commit files**:
+   ```bash
+   git init
+   git add .
+   git commit -m "Add Optimal Search Pattern DAA Practical Website"
+   ```
+
+3. **Create a GitHub repository**:
+   * Go to [github.com/new](https://github.com/new).
+   * Name your repository `optimal-search-pattern-obst`.
+   * Set visibility to **Public**.
+
+4. **Push your code**:
+   ```bash
+   git remote add origin https://github.com/<your-username>/optimal-search-pattern-obst.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+5. **Enable GitHub Pages**:
+   * Navigate to your repository's **Settings** tab.
+   * On the left sidebar, click **Pages**.
+   * Under **Build and deployment > Branch**, select `main` and folder `/ (root)`.
+   * Click **Save**.
+   * Your site will be published at `https://<your-username>.github.io/optimal-search-pattern-obst/` in 1–2 minutes!
+
+---
+
+## 🛠️ Tech Stack
+
+* **HTML5:** Semantic, accessible layout structured for academic review.
+* **CSS3:** Responsive flexbox/grid styling using an academic dark/light blue theme, print stylesheet for practical reports.
+* **Vanilla JavaScript:** Zero external libraries or runtime dependencies; 100% client-side DP engine and SVG tree generator.
